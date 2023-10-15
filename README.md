@@ -5,6 +5,7 @@
 - Use Jetpack Compose for UI
 - Use Dagger Hilt for dependency injection
 - Use Retrofit (better use Ktor for cross platform development KMM)
+- Use a cache for Retrofit to not make to many request to the restricted API
 
 ## Unit Test
 I have tested mainly the business logic. 
