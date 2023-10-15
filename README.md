@@ -1,4 +1,9 @@
 # My Bank by Steve
+This README outlines the primary features of the "Ma Banque" interview exercise, which displays a list of banks along with their accounts and provides a detailed view of their transactions.
+
+<img src="./docs/assets/ma-banque.gif" alt="drawing" width="200"/>
+
+The repo contains a generated apk called *ma-banque.apk* (Note: it's only to facilitate the review, binary must not be put inside git repository)
 
 ## Architecture
 - Use clean architecture and MVVM
