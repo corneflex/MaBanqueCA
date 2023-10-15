@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MaBanqueCA</string>
+    <string name="my_accounts">My Accounts</string>
+    <string name="simulation">Simulation</string>
+    <string name="play">It\'s your turn</string>
+    <string name="credit_agricole">Credit Agricole</string>
+    <string name="other_banks">Other Banks</string>
+</resources>
