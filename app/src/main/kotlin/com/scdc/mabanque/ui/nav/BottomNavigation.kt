@@ -11,7 +11,9 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun BottomNavigation(nav: NavHostController) {
@@ -60,4 +62,10 @@ fun RowScope.AddItem(
         onClick = onClick,
         colors = NavigationBarItemDefaults.colors()
     )
+}
+
+@Preview
+@Composable
+fun Preview() {
+    BottomNavigation(rememberNavController())
 }

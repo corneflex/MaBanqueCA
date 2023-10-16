@@ -4,7 +4,9 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.tooling.preview.Preview
 import com.scdc.mabanque.features.banks.domain.model.Operation
+import com.scdc.mabanque.features.banks.ui.PreviewData
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -22,4 +24,11 @@ fun OperationListItem(operation: Operation){
         trailingContent = {
                 Text(text = "${operation.amount}€")
         })
+}
+
+
+@Preview
+@Composable
+fun OperationListItemPreview(){
+    OperationListItem(PreviewData.sampleOperation)
 }
