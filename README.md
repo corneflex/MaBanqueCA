@@ -3,7 +3,7 @@ This README outlines the primary features of the "Ma Banque" interview exercise,
 
 <img src="./docs/assets/ma-banque.gif" alt="drawing" width="200"/>
 
-The repo contains a generated apk called *ma-banque.apk* (Note: it's only to facilitate the review, binary must not be put inside git repository)
+You will find the APK of the application in the github Actions section.
 
 ## Architecture
 - Use clean architecture and MVVM
@@ -13,6 +13,7 @@ of the domain layer. Data, Domain and Ui can be encapsulated in their own module
 - Use Dagger Hilt for dependency injection (NetworkModule, BanksModule)
 - Use Retrofit (better use Ktor for cross platform development KMM)
 - Use a cache for Retrofit to not make to many request to the restricted API
+- Github action CI/CD for building Apk (debug / release)
 
 ## Unit Test
 I have tested mainly the business logic. 
