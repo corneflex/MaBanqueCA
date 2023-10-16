@@ -17,8 +17,9 @@ I have tested mainly the business logic.
 - BanksViewModel
 - GetBanksUseCase
 - RetrofitAccountRepository
-- Issue for running test with coverage on BankViewModelTest due to R resource. I got not the time to fix it
+- Issue for running test with coverage on BankViewModelTest due to R resource. I don't get the time to fix it
 - Need more time to write UI tests
+- Add Integration test with mock of OKHttpClient
 
 ## Enhancement
 - Create a dedicated view models for the detail account view
