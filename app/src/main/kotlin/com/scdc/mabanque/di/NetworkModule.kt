@@ -3,6 +3,7 @@ package com.scdc.mabanque.di
 import android.content.Context
 import com.scdc.core.network.UnixDateJsonAdapter
 import com.scdc.core.network.isNetworkConnected
+import com.scdc.mabanque.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -20,7 +21,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "https://cdf-test-mobile-default-rtdb.europe-west1.firebasedatabase.app"
 
     @Provides
     @Singleton
@@ -46,18 +46,23 @@ object NetworkModule {
                     ).build()
                 chain.proceed(request)
             }
+            .addInterceptor(MockResponseInterceptor())
             .build()
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val moshi = Moshi.Builder()
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
             .add(KotlinJsonAdapterFactory()) // This is for Kotlin classes
             .add(UnixDateJsonAdapter())
             .build()
+    }
 
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()

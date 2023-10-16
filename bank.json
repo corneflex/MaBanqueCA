@@ -1,5 +1,5 @@
 {
-  "banks": [
+  "banks.json": [
     {
       "name": "CA Languedoc",
       "isCA": 1,
