@@ -1,7 +1,8 @@
+
 import com.scdc.mabanque.features.banks.data.dto.bankDTO
-import com.scdc.mabanque.features.banks.data.remote.BankService
 import com.scdc.mabanque.features.banks.data.repository.RetrofitAccountRepository
 import com.scdc.mabanque.features.banks.domain.model.Resource
+import com.scdc.mabanque.features.banks.domain.repository.BankDataSource
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.TestCase.assertEquals
@@ -15,18 +16,18 @@ import org.junit.Test
 class RetrofitAccountRepositoryTest {
 
     private lateinit var repository: RetrofitAccountRepository
-    private val bankService: BankService = mockk()
+    private val bankDataSource: BankDataSource = mockk()
 
     @Before
     fun setup() {
-        repository = RetrofitAccountRepository(bankService)
+        repository = RetrofitAccountRepository(bankDataSource)
     }
 
     @Test
     fun `getBankAccounts emits Success when API call is successful`() = runBlocking {
        runTest {
            val mockData = listOf(bankDTO)
-           coEvery { bankService.getBanks() } returns mockData
+           coEvery { bankDataSource.fetchBanks() } returns mockData
 
            val result = repository.getBankAccounts().toList()
 
@@ -39,7 +40,7 @@ class RetrofitAccountRepositoryTest {
     fun `getBankAccounts emits Error when API call fails`() = runBlocking {
         runTest {
             val exception = Exception("Network Error")
-            coEvery { bankService.getBanks() } throws exception
+            coEvery { bankDataSource.fetchBanks() } throws exception
 
             val result = repository.getBankAccounts().toList()
             assertTrue(result[0] is Resource.Loading)
